@@ -9,8 +9,6 @@ import java.awt.event.*;
  * Este Codigo Interpreta la parte visual de Tant Fant
  */
 public class TantFantGUI extends JFrame {
-
-    public JPanel tant ;
     public JMenu menu;
     public JMenuItem nuevo,abrir,guardar,salir;
 
@@ -34,7 +32,7 @@ public class TantFantGUI extends JFrame {
     public void prepareElements(){
         setTitle("Tant Fant");
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(pantalla.width/4,pantalla.height/4);
+        setSize(pantalla.width/2,pantalla.height/2);
         setLocationRelativeTo(null);
         prepareElementsMenu();
         prepareElementsBoard();
@@ -60,7 +58,8 @@ public class TantFantGUI extends JFrame {
      *
      */
     private void prepareElementsBoard(){
-        tant = new TantFant();
+        JPanel tant = new TantFant();
+        this.getContentPane().add(tant);
     }
     /**
      *
