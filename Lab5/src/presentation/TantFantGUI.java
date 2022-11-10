@@ -1,7 +1,8 @@
+package presentation;
+import domain.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 
 /**
  * @ Nicolas Castro - Marco Alvarez
@@ -9,6 +10,7 @@ import java.io.File;
  */
 public class TantFantGUI extends JFrame {
 
+    public JPanel tant ;
     public JMenu menu;
     public JMenuItem nuevo,abrir,guardar,salir;
 
@@ -35,6 +37,7 @@ public class TantFantGUI extends JFrame {
         setSize(pantalla.width/4,pantalla.height/4);
         setLocationRelativeTo(null);
         prepareElementsMenu();
+        prepareElementsBoard();
     }
     /**
      *
@@ -52,6 +55,12 @@ public class TantFantGUI extends JFrame {
         menu.add(guardar);
         menu.add(salir);
         setJMenuBar(menuBar);
+    }
+    /**
+     *
+     */
+    private void prepareElementsBoard(){
+        tant = new TantFant();
     }
     /**
      *
@@ -101,13 +110,11 @@ public class TantFantGUI extends JFrame {
      *
      */
     public void Nuevo(){
-        File game = new File("");
     }
     /**
      *
      */
     public void Abrir(){
-
     }
     /**
      *
@@ -124,5 +131,7 @@ public class TantFantGUI extends JFrame {
         }else {
             setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         }
+    }
+    public void refresh(){
     }
 }
