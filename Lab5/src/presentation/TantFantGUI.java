@@ -9,8 +9,8 @@ import java.awt.event.*;
  * Este Codigo Interpreta la parte visual de Tant Fant
  */
 public class TantFantGUI extends JFrame {
-    public JMenu menu;
-    public JMenuItem nuevo,abrir,guardar,salir;
+    public JMenu menu,config;
+    public JMenuItem nuevo,abrir,guardar,salir,tamaño,color;
 
     /**
      *
@@ -32,10 +32,12 @@ public class TantFantGUI extends JFrame {
     public void prepareElements(){
         setTitle("Tant Fant");
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(pantalla.width/2,pantalla.height/2);
+        setSize(pantalla.width/4,pantalla.height/4);
         setLocationRelativeTo(null);
         prepareElementsMenu();
         prepareElementsBoard();
+
+
     }
     /**
      *
@@ -43,15 +45,21 @@ public class TantFantGUI extends JFrame {
     private void prepareElementsMenu(){
         JMenuBar menuBar = new JMenuBar();
         menu = new JMenu("Menú");
+        config = new JMenu("Configuración");
         menuBar.add(menu);
+        menuBar.add(config);
         nuevo = new JMenuItem("Nuevo");
         abrir = new JMenuItem("Abrir");
         guardar = new JMenuItem("Guardar");
         salir = new JMenuItem("Salir");
+        color = new JMenuItem("Cambiar Color");
+        tamaño = new JMenuItem("Cambiar Tamaño");
         menu.add(nuevo);
         menu.add(abrir);
         menu.add(guardar);
         menu.add(salir);
+        config.add(color);
+        config.add(tamaño);
         setJMenuBar(menuBar);
     }
     /**
@@ -61,6 +69,7 @@ public class TantFantGUI extends JFrame {
         JPanel tant = new TantFant();
         this.getContentPane().add(tant);
     }
+
     /**
      *
      */
