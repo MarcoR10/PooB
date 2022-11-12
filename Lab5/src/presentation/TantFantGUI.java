@@ -3,6 +3,7 @@ import domain.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 
 /**
  * @ Nicolas Castro - Marco Alvarez
@@ -11,6 +12,9 @@ import java.awt.event.*;
 public class TantFantGUI extends JFrame {
     public JMenu menu,config;
     public JMenuItem nuevo,abrir,guardar,salir,tamaño,color;
+
+    public JFileChooser fileChooser;
+    Color colo;
 
     /**
      *
@@ -36,6 +40,7 @@ public class TantFantGUI extends JFrame {
         setLocationRelativeTo(null);
         prepareElementsMenu();
         prepareElementsBoard();
+        prepareElementsChooser();
 
 
     }
@@ -68,6 +73,9 @@ public class TantFantGUI extends JFrame {
     private void prepareElementsBoard(){
         JPanel tant = new TantFant();
         this.getContentPane().add(tant);
+    }
+    private void prepareElementsChooser(){
+        fileChooser = new JFileChooser();
     }
 
     /**
@@ -113,6 +121,21 @@ public class TantFantGUI extends JFrame {
                     }
                 }
         );
+        color.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Color();
+                    }
+                }
+        );
+
+        tamaño.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Tamaño();
+                    }
+                }
+        );
     }
     /**
      *
@@ -123,11 +146,21 @@ public class TantFantGUI extends JFrame {
      *
      */
     public void Abrir(){
+        int action = fileChooser.showSaveDialog(abrir);
+        if (action == JFileChooser.APPROVE_OPTION){
+            File archivo = fileChooser.getSelectedFile();
+            JOptionPane.showMessageDialog(null,"Archivo cargado "+ archivo.getName()+"\nFuncionalidad ABRIR se encuentra en construcion");
+        }
     }
     /**
      *
      */
     public void Guardar() {
+        int action = fileChooser.showSaveDialog(guardar);
+        if (action == JFileChooser.APPROVE_OPTION){
+            File archivo = fileChooser.getSelectedFile();
+            JOptionPane.showMessageDialog(null,"Archivo guardado "+ archivo.getName()+"\nFuncionalidad GUARDAR se encuentra en construcion");
+         }
     }
     /**
      *
@@ -139,6 +172,13 @@ public class TantFantGUI extends JFrame {
         }else {
             setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         }
+    }
+    public void Color(){
+        JColorChooser selector = new JColorChooser();
+        colo = selector.showDialog(null,"Selecciona el color del fondo",Color.GRAY);
+
+    }
+    public void Tamaño(){
     }
     public void refresh(){
     }
